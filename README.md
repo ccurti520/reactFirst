@@ -1,2 +1,0 @@
-# reactFirst
-Created with CodeSandbox
