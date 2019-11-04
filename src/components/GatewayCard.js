@@ -1,67 +1,93 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-
+import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
 import SettingsIcon from "@material-ui/icons/Settings";
 import InfoIcon from "@material-ui/icons/Info";
-const useStyles = makeStyles({
-  card: {
-    minWidth: 275
-  },
-  bullet: {
-    display: "inline-block",
-    margin: "0 2px",
-    transform: "scale(0.8)"
-  },
-  title: {
-    fontSize: 14
-  },
-  pos: {
-    marginBottom: 12
+import Card from "@material-ui/core/Card";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import Button from "@material-ui/core/Button";
+import "typeface-roboto";
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    padding: theme.spacing(3, 2),
+    background: "	#887878",
+    borderRadius: 10,
+    font: "typeface-roboto"
   }
-});
+}));
 
 export default function GatewayCard() {
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
 
   return (
-    <Card className={classes.card}>
-      <CardContent>
-        <Typography
-          className={classes.title}
-          color="textSecondary"
-          gutterBottom
-          align="left"
-        >
-          Sentinel Gateway
-        </Typography>
-        <Typography variant="h5" component="h2" align="left">
-          RGI-GW-100945
-        </Typography>
-
-        <Typography variant="caption" component="p" align="left">
-          {bull} <b>data ip:</b> 192.168.5.1
-        </Typography>
-        <Typography variant="caption" component="p" align="left">
-          {bull} <b>channel:</b> 23
-        </Typography>
-        <Typography variant="caption" component="p" align="left">
-          {bull} <b>data :</b> 3
-        </Typography>
-      </CardContent>
-      <CardActions align="right">
-        <IconButton size="large">
-          <InfoIcon />
-        </IconButton>
-        <IconButton size="large">
-          <SettingsIcon />
-        </IconButton>
+    <Card className={classes.root}>
+      <Grid
+        container
+        direction="row"
+        alignItems="flex-end"
+        justify="space-between"
+      >
+        <GatewayNameTitle />
+        <Grid item>
+          <IconButton edge="start">
+            <SettingsIcon />
+          </IconButton>
+        </Grid>
+      </Grid>
+      <DisplayGatewayInfoCard />
+      <CardActions alignItems="flex-start">
+        <Button color="primary">Actions</Button>
       </CardActions>
     </Card>
+  );
+}
+function DisplayGatewayInfoCard() {
+  const classes = useStyles();
+  const bull = <span className={classes.bullet}>•</span>;
+  return (
+    <Grid container direction="column">
+      <Typography variant="caption" align="left">
+        {bull} <b>data ip:</b> 192.168.5.1
+      </Typography>
+
+      <Typography variant="caption" align="left">
+        {bull} <b>channel:</b> 23
+      </Typography>
+
+      <Typography variant="caption" align="left">
+        {bull} <b>data rate:</b> 3
+      </Typography>
+    </Grid>
+  );
+}
+
+function GatewayNameTitle() {
+  return (
+    <Grid item>
+      <Grid container direction="column" alignItems="flex-start" padding={10}>
+        <Grid item>
+          <Typography
+            variant="subtitle2"
+            color="textSecondary"
+            align="left"
+            gutterBottom
+          >
+            Sentinel Gateway
+          </Typography>
+        </Grid>
+        <Grid item>
+          <Typography variant="h5" component="h2" align="left">
+            RGI-GW-100945
+          </Typography>
+        </Grid>
+      </Grid>
+    </Grid>
   );
 }
