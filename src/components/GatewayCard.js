@@ -12,14 +12,16 @@ import CardContent from "@material-ui/core/CardContent";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import Button from "@material-ui/core/Button";
+import Box from "@material-ui/core/Box"
 import "typeface-roboto";
 
 const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(3, 2),
-    background: "	#887878",
+    
     borderRadius: 10,
-    font: "typeface-roboto"
+    font: "typeface-roboto",
+    spacing: 2,
   }
 }));
 
@@ -27,14 +29,19 @@ export default function GatewayCard() {
   const classes = useStyles();
 
   return (
+    
+      
     <Card className={classes.root}>
+     
       <Grid
         container
         direction="row"
         alignItems="flex-end"
         justify="space-between"
       >
-        <GatewayNameTitle />
+        <Typography variant="h5" component="h2" align="left">
+            RGI-GW-100945
+          </Typography>
         <Grid item>
           <IconButton edge="start">
             <SettingsIcon />

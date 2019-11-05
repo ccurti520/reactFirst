@@ -15,6 +15,8 @@ import ListItem from "@material-ui/core/ListItem";
 import Button from "@material-ui/core/Button";
 import SensorIcon from "@material-ui/icons/SettingsInputSvideo";
 import Icon from "@material-ui/core/Icon";
+import Chip from "@material-ui/core/Chip";
+
 const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(3, 2)
@@ -48,7 +50,7 @@ export default function GatewayCard() {
           alignItems="flex-start"
         >
           <Grid item>
-            <SensorNameTitle />
+            <SensorNameStatus />
           </Grid>
         </Grid>
       </Grid>
@@ -56,7 +58,7 @@ export default function GatewayCard() {
   );
 }
 
-function SensorNameTitle() {
+function SensorNameStatus() {
   return (
     <Grid container direction="column" alignItems="flex-start">
       <Grid item>
@@ -65,14 +67,7 @@ function SensorNameTitle() {
         </Typography>
       </Grid>
       <Grid item>
-        <Typography
-          variant="subtitle2"
-          color="textSecondary"
-          align="left"
-          gutterBottom
-        >
-          RotoSense Sensor
-        </Typography>
+        <Chip label="online" />
       </Grid>
     </Grid>
   );
