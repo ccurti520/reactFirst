@@ -17,11 +17,13 @@ import "typeface-roboto";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    padding: theme.spacing(3, 2),
-    
-    borderRadius: 10,
+    padding: theme.spacing(3, 2), 
+    borderRadius: 0,
     font: "typeface-roboto",
     spacing: 2,
+    
+    
+
   }
 }));
 
@@ -29,9 +31,9 @@ export default function GatewayCard() {
   const classes = useStyles();
 
   return (
-    
-      
-    <Card className={classes.root}>
+  <Box width="1">
+   
+    <Card className={classes.root} >
      
       <Grid
         container
@@ -39,9 +41,7 @@ export default function GatewayCard() {
         alignItems="flex-end"
         justify="space-between"
       >
-        <Typography variant="h5" component="h2" align="left">
-            RGI-GW-100945
-          </Typography>
+       <GatewayNameTitle />
         <Grid item>
           <IconButton edge="start">
             <SettingsIcon />
@@ -49,10 +49,9 @@ export default function GatewayCard() {
         </Grid>
       </Grid>
       <DisplayGatewayInfoCard />
-      <CardActions alignItems="flex-start">
-        <Button color="primary">Actions</Button>
-      </CardActions>
+      
     </Card>
+    </Box>
   );
 }
 function DisplayGatewayInfoCard() {
@@ -96,5 +95,6 @@ function GatewayNameTitle() {
         </Grid>
       </Grid>
     </Grid>
+  
   );
 }

@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function GatewayCard() {
+export default function SensorCard() {
   const classes = useStyles();
 
   return (
